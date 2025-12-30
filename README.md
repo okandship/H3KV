@@ -26,7 +26,7 @@ this is valid commonmark markdown. it renders beautifully while carrying structu
 
 ### conversion to data object (schema validated)
 
-```json
+```ts
 {
   name: "Alice Smith",
   age: 30,
