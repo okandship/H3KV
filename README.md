@@ -35,7 +35,7 @@ this is valid commonmark markdown. it renders beautifully while carrying structu
 }
 ```
 
-## features
+### features
 
 **🛡️ markdown → typed object**
 
