@@ -62,18 +62,38 @@ this is valid commonmark markdown. it renders beautifully while carrying structu
 ### installation
 
 ```bash
-# bun / deno / cloudflare workers
-bun add jsr:@okandship/h3kv
+deno add jsr:@okandship/h3kv
+```
 
-# or with npm / pnpm / yarn (via jsr → npm sync)
-npm install @okandship/h3kv
+```bash
+pnpm i jsr:@okandship/h3kv
+# or (using pnpm 10.8 or older)
+pnpm dlx jsr add @okandship/h3kv
+```
+
+```bash
+yarn add jsr:@okandship/h3kv
+# or (using Yarn 4.8 or older)
+yarn dlx jsr add @okandship/h3kv
+```
+
+```bash
+vlt install jsr:@okandship/h3kv
+```
+
+```bash
+npx jsr add @okandship/h3kv
+```
+
+```bash
+bunx jsr add @okandship/h3kv
 ```
 
 ### basic usage
 
 ```ts
 import { z } from "zod";
-import { dataObjectToMarkdown, markdownToDataObject } from "./index";
+import { dataObjectToMarkdown, markdownToDataObject } from "@okandship/h3kv";
 
 // define your schema (single source of truth)
 const ProfileSchema = z.object({
