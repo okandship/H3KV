@@ -165,8 +165,25 @@ export function dataObjectToMarkdown<T extends SchemaObject>(
   const shouldOmit = (value: unknown) =>
     value == null || (typeof value === "string" && value.trim() === "");
 
-  const stringifyValue = (value: unknown): string =>
-    value instanceof Date ? value.toISOString() : String(value);
+  const stringifyValue = (value: unknown): string => {
+    if (typeof value === "boolean") {
+      return value ? "yes" : "no";
+    }
+
+    if (value instanceof Date) {
+      const isMidnight =
+        value.getUTCHours() === 0 &&
+        value.getUTCMinutes() === 0 &&
+        value.getUTCSeconds() === 0 &&
+        value.getUTCMilliseconds() === 0;
+      return isMidnight
+        ? // biome-ignore lint/style/noNonNullAssertion: there is always T
+          value.toISOString().split("T")[0]!
+        : value.toISOString();
+    }
+
+    return String(value);
+  };
 
   const keys =
     outputOrder ?? (Object.keys(schema._zod.def.shape) as SchemaOutputKey<T>[]);

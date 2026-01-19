@@ -310,7 +310,7 @@ low
       expect(markdown).toContain("### age");
       expect(markdown).toContain("\n0\n");
       expect(markdown).toContain("### isPublic");
-      expect(markdown).toContain("\nfalse\n");
+      expect(markdown).toContain("\nno\n");
 
       // array items include 0
       expect(markdown).toContain("### quantities");
@@ -721,7 +721,7 @@ false
 
       expect(markdown).toContain("- valid");
       expect(markdown).toContain("- 0");
-      expect(markdown).toContain("- false");
+      expect(markdown).toContain("- no");
       expect(markdown).toContain("- another");
     });
   });
