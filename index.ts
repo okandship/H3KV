@@ -165,6 +165,9 @@ export function dataObjectToMarkdown<T extends SchemaObject>(
   const shouldOmit = (value: unknown) =>
     value == null || (typeof value === "string" && value.trim() === "");
 
+  const stringifyValue = (value: unknown): string =>
+    value instanceof Date ? value.toISOString() : String(value);
+
   const keys =
     outputOrder ?? (Object.keys(schema._zod.def.shape) as SchemaOutputKey<T>[]);
 
@@ -186,7 +189,7 @@ export function dataObjectToMarkdown<T extends SchemaObject>(
     if (Array.isArray(rawValue)) {
       const values = rawValue
         .filter((value) => !shouldOmit(value))
-        .map((value) => String(value).trim())
+        .map((value) => stringifyValue(value).trim())
         .filter(Boolean);
 
       if (!values.length) {
@@ -207,7 +210,7 @@ export function dataObjectToMarkdown<T extends SchemaObject>(
         })),
       });
     } else {
-      const values = String(rawValue)
+      const values = stringifyValue(rawValue)
         .split("\n")
         .map((value) => value.trim())
         .filter(Boolean);
