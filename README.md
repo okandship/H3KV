@@ -1,5 +1,7 @@
 # @okandship/h3kv
 
+<img width="1536" height="1024" alt="ChatGPT Image May 31, 2026, 09_35_08 AM" src="https://github.com/user-attachments/assets/9fc43a91-59be-4dc2-8673-8716e1644b9d" />
+
 **H3KV** is a tiny, type-safe library for bidirectional conversion between a simple, human-readable markdown format and javascript/typescript data objects, powered by zod and the unified/remark ecosystem
 
 ### the format (H3KV)
